@@ -30,9 +30,8 @@ jobs:
           utcOffset: "+09:00"
 
       # 3 배포용 패키지 경로 저장
-           - name: Set artifact
-           run: echo "artifact=$(find $PWD/build/libs -name '*.jar')" >> $GITHUB_ENV
-
+      - name: Set artifact
+        run: echo "artifact=$(find $PWD/build/libs -name '*.jar')" >> $GITHUB_ENV
 
       # 4 빈스토크 배포
       - name: Beanstalk Deploy
@@ -44,4 +43,4 @@ jobs:
           environment_name: Github-action-env
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
-          deployment_package: ./build/libs/${{env.artifact}}
+          deployment_package: ${{env.artifact}}
