@@ -42,5 +42,5 @@ jobs:
           application_name: Github-action
           environment_name: Github-action-env
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
-          region: ap-northeast-2
+          region: ap-northeast-1
           deployment_package: ./build/libs/${{env.artifact}}
